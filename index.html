@@ -1,0 +1,458 @@
+<html>
+    <body><script>
+// 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+
+const miFuncion = (string="") => {
+    if(typeof string === 'string'){
+        return string.length
+    }else{
+        return 'No ingresaste una cadena'
+    }
+}
+
+console.log(miFuncion("Hola mundo"))
+// 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4)
+//  devolverá "Hola".
+
+const miFuncion2 = (string,numero)=> {
+    if(typeof string === "string" && typeof numero === "number"){
+        let palabra="";
+    for(let i = 0; i <= numero -1; i++){
+        palabra += string[i]
+    }
+    return palabra
+    }else{
+        return 'datos ingresados incorrectos'
+    }
+
+}
+console.log(miFuncion2("asdasd",2))
+// 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. 
+// miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+
+const miFuncion3 = (string, separador) => {
+
+    let array = string
+    array = array.split(separador)
+        return array
+}
+
+console.log(miFuncion3('hola que tal'," "))
+// 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) 
+// devolverá Hola Mundo Hola Mundo Hola Mundo
+
+// const miFuncion4 = (string,n) => {
+//     let palabra =""
+//     for(let i =1 ; i <= n; i++){
+//         palabra += string
+//     }
+
+//     return palabra
+// }
+
+const miFuncion4 = (string,n) => {
+    let palabra =""
+    for(let i =1 ; i <= n; i++){
+        palabra += string
+    }
+
+    return palabra
+}
+
+console.log(miFuncion4("holamundo ",3))
+
+
+// 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+const miFuncion5 = (string) => {
+    // asigno el valor del parametro a una variable
+    let palabra = string;
+    let palabraInvertida ="";
+
+    for(let i = palabra.length-1; i >= 0; i--){
+        palabraInvertida += palabra[i]
+    }
+    return palabraInvertida
+
+}
+
+console.log(miFuncion5("GUSTAVO"))
+// 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. 
+// miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+
+// const miFuncion6 = (str,evaluar) => {
+//     let string = str.split(" ")
+//     let contador = 0
+//     for(let i = 0; i<=string.length-1;i++){
+//         if(string[i] === evaluar) contador++
+//     }
+//     return contador
+// }
+
+// esta es la frase original
+// var cadena = "Era una vez un gato y un zapato que deseaban ser amigos de un ";
+// // encuentra la primer posición de "ato
+// let i = 0;
+// let c= 0
+
+// while(i >= 0){
+//     i = cadena.indexOf("ato",i)
+//     if(i!== -1){
+        
+//         c++
+//         console.log(c)
+//     }
+    
+// }
+    
+// 7) Programa una función que valide si una palabra o frase dada, es un palíndromo 
+// (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+const miFuncion7 = (palabra) => {
+    let invertida ="";
+
+    for(let i = palabra.length-1; i >= 0; i--){
+        invertida += palabra[i]
+    }
+
+    if(invertida.toLocaleLowerCase()===palabra.toLocaleLowerCase()) return true
+
+    return false
+    
+}
+
+console.log(miFuncion7("TAT"))
+// 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe.
+//  miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5."
+
+    const miFuncion8= (string,pattern) => {
+        let resultado =""
+        let r = 0 
+        for(let i = 0; i < string.length; i++){
+
+     // Tiene que ser mayor a la cantidad de su tamaño para que permita ingresar al bucle xyz = 3
+            while(r <= pattern.length+1){       
+                
+                // Si no coincide se muestra y la r vuelve a 0 para comparar con la siguiente letra
+                if(string[i] !== pattern[r]){
+                    resultado+=string[i]
+                    r=0
+                    break
+                    //si coincide suma letra
+                }else{                    
+                    r++
+                    break
+                }
+
+            }
+        }
+        return resultado
+    }
+
+    console.log(miFuncion8("xyz1, xyz2, xyz3, xyz4, xyz5", "xyz") )
+
+    //Numero random entre 500 y 901
+    // Retorna un número aleatorio entre min (incluido) y max (excluido)
+    function getRandomArbitrary(min, max) {
+        return Math.round(Math.random() * (max - min) + min)
+    }
+
+    console.log(getRandomArbitrary(502,600))
+
+    // 11) Programa una función que calcule el factorial de un número 
+    // (El factorial de un entero positivo n, se define como el producto
+    //  de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+    // const factorial = num => {
+    //     let numeros = 1
+    //     for (let index = 2; index <= num; index++) {
+    //         numeros = numeros * index 
+    //     }
+    //     return numeros
+    // }
+    // console.log(factorial(7))
+
+
+// 12) Programa una función que determine si un número es primo (aquel que solo es divisible 
+// por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+
+const miFuncion9 = (n) => {
+    let resultado = 0
+    for(let i = 2; i < n; i++){
+        resultado = n % i
+        
+        if(resultado === 0) {
+               return false
+        }
+
+        
+    }
+    return true
+}
+
+console.log(miFuncion9(79))
+
+//13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+const miFuncion13 = numero => {
+    if(numero % 2 === 0){
+        return `El numero ${numero} es Par`
+    }else { return `El numero ${numero} es Impar` }
+}
+console.log(miFuncion13(28))
+
+// 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+//(0 °C × 9/5) + 32 = 32 °F
+//(32 °F − 32) × 5/9
+
+const miFuncion14 = (num,tipo) => {
+    let resultado ;
+    let type= tipo.toUpperCase()
+    
+    if(type === "C"){
+        resultado = (num * 9/5) + 32
+        return `${resultado} F°`
+    }
+
+    if(type === "F"){
+        resultado = (num - 32) * 5/9
+        return `${resultado} C°`
+    }
+}
+
+console.log(miFuncion14(22,"f"))
+
+// 15) Programa una función para convertir números de base binaria a decimal y
+//  viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+
+const miFuncion15 = (numero,base) => {
+    let numeros = numero.toString()
+    // console.log(numeros)
+    
+    let array = numeros.split("")
+    console.log(array)
+    
+    let resultado = 0
+
+    let r = array.length-1
+
+    for(let i = 0; i<= array.length-1; i++){
+        let num = parseInt(array[i])
+
+        while(r >= 0){
+            if(num===1){
+           resultado += Math.pow(base,r)
+            r--
+            break
+            }else{
+                r--
+                break
+            }
+        }
+        
+    }
+
+    return resultado
+
+}
+
+console.log(miFuncion15(110000,2)) 
+
+const miFuncion152 = (num) => {
+    let numeroFinal =""
+    let numeroFinal2 =""
+    
+
+
+    while(num >= 1){
+        
+        if(num % 2 === 0 ) {
+            numeroFinal += "0"
+        }else{
+            numeroFinal += "1"
+        }
+
+        num = num / 2
+
+    }
+
+
+    for(let i = numeroFinal.length-1; i >=0 ;i--){
+        numeroFinal2 += numeroFinal[i]
+    }
+    return numeroFinal2
+    
+}
+
+
+console.log(miFuncion152(48)) 
+
+
+const miFuncion16 = (monto,desc) => {
+    let descuento = (monto * desc) / 100
+    valorFinal = monto-descuento
+    return valorFinal
+}
+console.log(miFuncion16(1000,20))
+
+// 17) Programa una función que dada una fecha válida determine cuantos años han 
+// pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+
+//console.log(new Date().getTime()) DEVUELVE segundos
+
+const miFuncion17 = fecha => {
+
+    if(!fecha instanceof Date) return "No es una fecha valida"
+
+    let hoyMenosFecha = new Date().getTime() - fecha.getTime(),
+        aniosEnMS = 1000
+
+}
+
+
+// 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+
+const miFunction18 = string => {
+    let vocales = "aeiouáéíóú"
+    let consonantes ="bcdfghjklmnpqrstvwxyz"
+    let v = 0
+    let c = 0
+
+    let String = string.toLocaleLowerCase()
+
+    for(let i = 0; i <= String.length-1 ;i++){
+
+        for(let r = 0; r <= vocales.length-1;r++){
+            if(String[i] === vocales[r]){
+                v++
+                
+            }
+        }
+
+        for(let z = 0; z <= consonantes.length-1;z++){
+            if(String[i]=== consonantes[z]){
+                c++
+            }
+            
+        }
+    }
+
+    return `vocales ${v} consonantes ${c}`
+}
+
+console.log(miFunction18("Hola munddo"))
+// 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+const miFunction19 = nombre => {
+    const regExp = /^[a-z ,.'-]+$/i
+    return regExp.test(nombre)
+
+}
+
+console.log(miFunction19())
+// 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+const miFunction20 = email => {
+    const regExp2 = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    return regExp2.test(email)
+
+}
+
+console.log(miFunction20("gustavo@asdas.com"))
+
+// 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
+const miFunction21 = array => {
+    const newArray = []
+    for(let i = 0; i <array.length ;i++){
+        newArray.push(Math.pow(array[i],2))
+    }
+    return newArray
+}
+console.log(miFunction21([1,4,5]))
+
+// 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+    const miFunction22= array => {
+        let mayor = array[0]
+        let menor = array[0]
+        let newArray = []
+
+        for(let i = 0; i < array.length;i++){
+            if(array[i] > mayor) mayor = array[i]
+        }
+
+        for(let r = 0; r < array.length;r++){
+            if(array[r] < menor) menor = array[r]
+        }
+        newArray.push(menor)
+        newArray.push(mayor)
+
+        return newArray
+        
+    }   
+
+    console.log(miFunction22([1, 4, 5, 99, -60]))
+
+// 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. 
+// miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+
+const miFunction23 = array => {
+
+    const numerosPares = []
+    const numerosImpares = []
+
+    for (let i = 0; i < array.length; i++) {
+        
+        if(array[i] % 2 === 0){
+            numerosPares.push(array[i])
+        }else{numerosImpares.push(array[i])}
+        
+    }
+
+    return numerosPares ,numerosImpares
+}
+
+console.log(miFunction23([1,2,3,4,5,6,7,8,9,0]))
+
+ // 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numero
+//  s ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+
+    const miFuncion24 = numeros => {
+        
+        const Ascendente = numeros.map(i=>i).sort()
+        const D = numeros.map(e=>e).sort().reverse()
+        
+        
+
+        return miObjeto = {
+            asc: Ascendente,
+            des:D
+        }
+    }
+   
+
+    console.log(miFuncion24([7, 5,7,8,6]))
+// 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+    const miFuncion25 = arRay => {
+        const newArray = [array[0]]
+
+        for (let i = 0; i < array.length; i++) {
+            
+            index = newArray.indexOf(array[i])
+
+            if (index === -1) {
+                newArray.push(array[i])
+            }
+            
+        }
+
+        return newArray
+    }
+    console.log(miFuncion25(["x", 10, "x", 2, "10", 10, true, true]))
+
+// 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+    const miFunction26 = numeros => {
+        let suma = 0
+        for (let index = 0; index < numeros.length; index++) {
+            suma +=numeros[index];
+        }
+        return(suma/numeros.length)
+    }
+    console.log(miFunction26([9,8,7,6,5,4,3,2,1,0]))
+
+</script>
+</body>
+</html>
